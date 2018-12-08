@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formReadingSheet 'bootstrap_4_layout.html.twig'%}
+
+{% block title %}Ajout{% endblock %}
+{% block body %}
+
+  {{ form_start(formReadingSheet) }}
+
+  {{ form_row(formReadingSheet.Title) }}
+
+  {{ form_row(formReadingSheet.Category) }}
+
+  {{ form_widget(formReadingSheet) }}
+
+  <button type="submit" class="btn btn-success">
+    
+    {% if editMode %}
+      Modifier
+    {% else %}
+      Ajouter 
+    {% endif %}
+  </button>
+
+  <a href="{{ path('book') }}" class="btn btn-primary">Annuler </a>
+
+  {{ form_end(formReadingSheet) }}
+
+{% endblock %}

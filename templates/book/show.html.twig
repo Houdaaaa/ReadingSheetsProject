@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="readingSheets">
+    <readingSheet>
+        <h2>{{readingSheet.title}}</h2>
+        <div class="metadata"> 
+            Auteur : {{readingSheet.author}} <br>
+            Pages : {{readingSheet.pagesnumber}} <br>
+            Editeur : {{readingSheet.editor}} <br>
+            Date d'édition : {{readingSheet.editiondate}} <br>
+            Collection : {{readingSheet.collection}} <br>
+            Langue originale : {{readingSheet.originallanguage}} <br>
+        </div>
+        <div class="content"> </div>
+            Personnages principaux : {{readingSheet.maincharacters}} <br>
+            Résumé : {{readingSheet.summary}} <br>
+            Extrait favori : {{readingSheet.enjoyedextract}} <br>
+            Analyse critique : {{readingSheet.criticalanalysis}}
+            <br>
+            <br>
+            <br>
+            <a href="{{ path('editbook', {'id': readingSheet.id }) }}" class="btn btn-primary">Modifier </a>
+            <a href="{{ path('removebook', {'id': readingSheet.id }) }}" class="btn btn-primary">Supprimer </a>
+            <a href="{{ path('book') }}" class="btn btn-primary">Précédent </a>
+        </div>
+    </readingSheet>
+</section>
+{% endblock %}

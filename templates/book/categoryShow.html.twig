@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="categories">
+
+    <category>
+        <div class="content"> </div>
+            Titre : {{category.title}} <br>
+            Description : {{category.description}} <br>
+            <br>
+            <br>
+            <br>
+            <a href="{{ path('editCategory', {'id': category.id }) }}" class="btn btn-primary">Modifier </a>
+            <a href="{{ path('removeCategory', {'id': category.id }) }}" class="btn btn-primary">Supprimer </a>
+            <a href="{{ path('categoryConfig') }}" class="btn btn-primary">Précédent </a>
+        </div>
+    </category>
+
+
+</section>
+{% endblock %}
