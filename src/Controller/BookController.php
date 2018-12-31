@@ -24,7 +24,7 @@ class BookController extends AbstractController
      */
     public function home() {
         return $this->render('book/home.html.twig', [
-            'title' => 'Ma bibliothèque',
+            'title' => 'Mes fiches de lecture',
         ]);
     }
 
@@ -69,7 +69,7 @@ class BookController extends AbstractController
         if($form->isSubmitted() && $form->isValid() )
         {
             $manager = $this->getDoctrine()->getManager();
-            $manager->persist($readingSheet); // manager permet d'insérer, modifier ou supprimer des lignes dans notre bdd
+            $manager->persist($readingSheet);
             $manager->flush(); 
 
             return $this->redirectToRoute('book_show', array('id' => $readingSheet->getId()) );
@@ -122,7 +122,6 @@ class BookController extends AbstractController
             'title' => $readingSheet->getTitle()
         ]);
     }
-
     
 
     /**
@@ -142,29 +141,4 @@ class BookController extends AbstractController
         }
     }
 
-    
-
-    //Précédents 
-    //suppression des catégories + suppresion des fiches de lecture  ---> refactoring
-    // a voir : service container de symfony
-
-    //Français/anglais
-    //Aligner les articles
-    //décoration 
-    //Boutons qui ne bougent pas
-
-    //Si suppression d'une catgéorie tous ses livres se suppriment (pas sûr)
-    //Ajouter image à chaque livre
-    //Validation : message d'erreur anglais/français?
-
-    //APIREST
-    //Refactoring + enlever trucs non nécessaires (query ['valid'])
-
-    //Relation parent-enfant angular très important à respecter
-    //exam : gerer tout le fnctionnement (faire diagramme pour mieux expliquer
-    //Communication entre composants 
-    //ce composant appelle doctrine qui appelle ci qui appelle ça qui utilise l'API etc
-    //question: si je veux ajouter ça dans la fenêtre comment je dois faire
-
-    //Assert dans entité  : API non violables
 }

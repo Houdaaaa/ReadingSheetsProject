@@ -39,34 +39,45 @@ class Category
      */
     private $description;
 
-    
-
+    /**
+     * Gets the id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Gets the title
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * Sets the title
+     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
         return $this;
     }
 
+    /**
+     * Gets the description
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * Sets the description
+     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 }

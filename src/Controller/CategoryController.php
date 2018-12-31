@@ -20,7 +20,6 @@ use App\Repository\CategoryRepository;
 class CategoryController extends AbstractController
 {
 
-
     /**
      * @Route("/book/category/config", name="categoryConfig")
     */
@@ -87,10 +86,6 @@ class CategoryController extends AbstractController
             'editMode' => $category->getID() !== null
         ]);
     }
-
-
-
-    
 
 
     /**

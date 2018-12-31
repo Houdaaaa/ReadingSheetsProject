@@ -2,7 +2,17 @@
 {% block title %}Accueil {% endblock %}
 {% block body %}
 
-<h1> Salut </h1>
+<br></br>
+<div class="jumbotron">
+  <h1 class="display-3">Bienvenue !</h1>
+  <p class="lead">Cette application web a pour but de répertorier tous les livres que tu liras. 
+      celle-ci sert non seulement à les classer par catégorie, mais également à t'obliger a créer des fiches de lecture pour garder un petit 
+    souvenir de cette lecture.</p>
+  <hr class="my-4">
+  <p>Tu pourras également créer tes propres catégories afin de classer tes livres comme bon te semble.</p>
+  <p>Bonne futures lectures !</p>
+</div>
+
 
 <a href="{{path('book') }}" > 
   <button type="button" class="btn btn-primary btn-lg " style="width:400px; background-color:grey;">Index des livres</button> 

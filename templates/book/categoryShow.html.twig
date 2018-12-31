@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<section class="categories">
+<form class="categories" style="width:50%;">
 
     <category>
         <div class="content"> </div>
-            Titre : {{category.title}} <br>
-            Description : {{category.description}} <br>
+            <h4>Titre : </h4> {{category.title}} <br>
+            <h4>Description : </h4> {{category.description}} <br>
             <br>
             <br>
             <br>
@@ -16,6 +16,5 @@
         </div>
     </category>
 
-
-</section>
+</form>
 {% endblock %}

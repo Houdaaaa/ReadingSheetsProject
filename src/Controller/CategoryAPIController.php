@@ -31,6 +31,16 @@ class CategoryAPIController extends AbstractController
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
         $response = new JsonResponse();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
+        {
+            $response->headers->set('Content-Type', 'application/text');
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+            $response->headers->set('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+            $response->headers->set('Access-Control-Allow-Headers', 'Content-Type',true);
+            return $response;
+        }
 
         $categories = $this->getDoctrine()
                            ->getRepository(Category::class)
@@ -41,7 +51,6 @@ class CategoryAPIController extends AbstractController
         $response->setContent($jsonContent);
         $response->headers->set('Content-Type', 'application/json');
         $response->setStatusCode('200');
-        $query['valid'] = true; 
 
         return $response;
     }
@@ -55,6 +64,16 @@ class CategoryAPIController extends AbstractController
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
         $response = new JsonResponse();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
+        {
+            $response->headers->set('Content-Type', 'application/text');
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+            $response->headers->set('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
+            $response->headers->set('Access-Control-Allow-Headers', 'Content-Type',true);
+            return $response;
+        }
 
         if($title != null)
         {
@@ -71,17 +90,14 @@ class CategoryAPIController extends AbstractController
                 $response->setContent($jsonContent);
                 $response->headers->set('Content-Type', 'application/json');
                 $response->setStatusCode('200');
-                $query['valid'] = true; 
             }
             else
             {
-                $query['valid'] = false; 
                 $response->setStatusCode('404');
             }      
         }
         else
         {
-            $query['valid'] = false; 
             $response->setStatusCode('404');
         }
 
@@ -95,6 +111,7 @@ class CategoryAPIController extends AbstractController
     public function category_add(Request $request) 
     {
         $response = new Response();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         $query = array();
 
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
@@ -120,12 +137,10 @@ class CategoryAPIController extends AbstractController
             $em->persist($cat);
             $em->flush();
             
-            $query['valid'] = true;             //non nécessaire
             $response->setStatusCode('200');
         }
         else 
         {
-            $query['valid'] = false; 
             $response->setStatusCode('404');
         }        
 
@@ -140,6 +155,7 @@ class CategoryAPIController extends AbstractController
     public function category_edit(Request $request, $id) 
     {
         $response = new Response();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         $query = array();
 
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
@@ -148,7 +164,6 @@ class CategoryAPIController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin', '*');
             $response->headers->set('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
             $response->headers->set('Access-Control-Allow-Headers', 'Content-Type',true);
-
             return $response;
         }
 
@@ -167,13 +182,11 @@ class CategoryAPIController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
-
-            $query['valid'] = true;                 
+              
             $response->setStatusCode('200');
         }
         else 
         {
-            $query['valid'] = false; 
             $response->setStatusCode('404');
         }        
 
@@ -190,6 +203,7 @@ class CategoryAPIController extends AbstractController
     public function category_delete($id)
     {
         $response = new Response();
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         $query = array();
 
         if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
@@ -198,7 +212,6 @@ class CategoryAPIController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin', '*');
             $response->headers->set('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
             $response->headers->set('Access-Control-Allow-Headers', 'Content-Type',true);
-
             return $response;
         }
 
@@ -208,12 +221,10 @@ class CategoryAPIController extends AbstractController
             $em->remove($category);
             $em->flush();
 
-            $query['valid'] = true; 
             $response->setStatusCode('200');
         }
         else
         {
-            $query['valid'] = false; 
             $response->setStatusCode('404');
         }
 

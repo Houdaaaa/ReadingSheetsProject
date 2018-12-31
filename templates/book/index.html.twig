@@ -4,23 +4,21 @@
 
 {% block body %}
 
-<section class="Categories">
-
-    {% for category in categories %}
-            
+<section class="categories">
+    {% for category in categories %}            
         <a href="{{ path('index_show', {'category' : category.Title }) }}" class="btn btn-primary" style="margin-left: 10px; margin-top: 15px;">{{category.Title}}</a>    
-
     {% endfor %}
 
-    <a href="{{ path('book') }}" class="btn btn-primary" style="margin-left: 1300px; margin-top: 0px;">Toutes les catégories</a>
-    <a href="{{ path('categoryConfig') }}" class="btn btn-primary " style=" background-color:grey; margin-left: 1700px; margin-top: 0px;">Configuration des catégories</a>
+    <a href="{{ path('book') }}" class="btn btn-primary" style="float:right; margin-left: 30px; margin-top: 10px;">Toutes les catégories</a>
 </section>
+
+<a href="{{ path('categoryConfig') }}" class="btn btn-primary " style="float:right; background-color:grey; margin-left: 10px; margin-top: 10px;">Configuration des catégories</a>
 
 
 <section class="readingSheets">
 
     {% for readingSheet in readingSheets %}
-        <book>
+        <book style="display:inline-block; margin-left: 20px; margin-right: 60px; margin-top: 80px;">
             <h2>{{readingSheet.title}}</h2>
             <div class="metadata"> 
                 Auteur : {{readingSheet.author}} <br>
@@ -35,9 +33,9 @@
 
     {% endfor %}
 
-    <a href="{{path('addBook')}}" > 
-        <button type="button" class="btn btn-primary" style="background-color:grey; margin-left: 1700px; margin-top: 30px;">Ajouter une fiche de lecture</button> 
-    </a>
-
 </section>
+
+<a href="{{path('addBook')}}" > 
+    <button type="button" class="btn btn-primary" style="float:right; background-color:grey; margin-left: 30px; margin-top: 30px;">Ajouter une fiche de lecture</button> 
+</a>
 {% endblock %}
